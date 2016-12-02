@@ -9,8 +9,8 @@
     "unit-test-w": "npm run unit-test -- -w",
     "integration-test": "meteor test --driver-package practicalmeteor:mocha",
     "integration-test-w": "TEST_WATCH=1 meteor test --driver-package practicalmeteor:mocha",
-    "integration-test-phantom": "meteor test --once --driver-package dispatch:mocha-phantomjs",
-    "integration-test-phantom-w": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha-phantomjs",
+    "integration-test-phantomjs": "meteor test --once --driver-package dispatch:mocha-phantomjs",
+    "integration-test-phantomjs-w": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha-phantomjs",
     "full-integration-test": "meteor test --full-app --driver-package practicalmeteor:mocha"
   },
   "dependencies": {
@@ -28,7 +28,6 @@
     "enzyme": "^2.6.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
-    "eslint-import-resolver-meteor": "^0.3.4",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-meteor": "^4.0.1",

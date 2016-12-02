@@ -11,10 +11,6 @@
   "env": {
     "es6": true
   },
-  "settings": {
-    "import/resolver": "meteor",
-    "import/extensions": [".js", ".jsx"]
-  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
