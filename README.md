@@ -1,1 +1,1 @@
-# edh-app
+# meteor-react-unit-testing-boilerplate
