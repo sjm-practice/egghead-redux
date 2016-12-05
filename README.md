@@ -1,1 +1,1 @@
-# meteor-react-unit-testing-boilerplate
+# meteor-react-testing-bp
