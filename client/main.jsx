@@ -1,19 +1,15 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
-import { createStore } from "redux";
-
-import todoApp from "../imports/api/reducers/todoApp";
 import TodoApp from "../imports/ui/components/TodoApp";
+import store from "../imports/api/stores/store";
 
 Meteor.startup(() => {
-  const store = createStore(todoApp);
-
   console.log(store.getState());
 
   const action = {
     type: "ADD_TODO",
-    id: 5,
+    id: 50099,
     text: "live todo yo.",
   };
 
@@ -22,9 +18,11 @@ Meteor.startup(() => {
   console.log(store.getState());
 
   const renderApp = () => {
-    render(<TodoApp />, document.getElementById("render-target"));
+    render(
+      <TodoApp todos={store.getState().todos} />,
+      document.getElementById("render-target")
+    );
   };
-  renderApp();
   store.subscribe(renderApp);
-
+  renderApp();
 });
