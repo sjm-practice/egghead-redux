@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* eslint-disable func-names, prefer-arrow-callback */
 
-import chai, { expect } from "chai";
+import { expect } from "chai";
 import deepFreeze from "deepfreeze";
 import todos from "../../../imports/api/reducers/todos";
 
@@ -50,6 +50,4 @@ describe("Todos Reducers", function () {
       expect(todos(stateBefore, action)).to.deep.equal(stateAfter);
     });
   });
-
 });
-
