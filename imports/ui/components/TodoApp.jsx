@@ -2,8 +2,24 @@ import React, {
   Component,
 } from "react";
 import store from "../../api/stores/store";
+import FilterLink from "./FilterLink";
 
 let nextTodoId = 0;
+
+const getVisibleTodos = (filter, todos) => {
+  switch (filter) {
+    case "SHOW_ALL":
+      return todos;
+    case "SHOW_ACTIVE":
+      return todos.filter((todo) => {
+        return !todo.completed;
+      });
+    case "SHOW_COMPLETED":
+      return todos.filter((todo) => {
+        return todo.completed;
+      });
+  }
+};
 
 class TodoApp extends Component {
   render() {
@@ -22,7 +38,7 @@ class TodoApp extends Component {
         >Add Todo
         </button>
         <ul>
-          {this.props.todos.map(todo =>
+          {getVisibleTodos(store.getState().visibilityFilter, this.props.todos).map(todo =>
             <li
               key={todo.id}
               onClick={() => {
@@ -37,6 +53,12 @@ class TodoApp extends Component {
             </li>
           )}
         </ul>
+        <p>
+          Show:{" "}
+          <FilterLink filter="SHOW_ALL">All</FilterLink>{" "}
+          <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
+          <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>{" "}
+        </p>
       </div>
     );
   }
