@@ -5,7 +5,7 @@ import React, {
 import store from "../../api/stores/store";
 import TodoList from "../components/TodoList";
 import AddTodo from "../components/AddTodo";
-import FilterLink from "../components/FilterLink";
+import Footer from "../components/Footer";
 
 let nextTodoId = 0;
 
@@ -45,27 +45,15 @@ class TodoAppContainer extends Component {
             })
           }
         />
-        <p>
-          Show:{" "}
-          <FilterLink
-            filter="SHOW_ALL"
-            currentFilter={visibilityFilter}
-          >
-            All
-          </FilterLink>{" "}
-          <FilterLink
-            filter="SHOW_ACTIVE"
-            currentFilter={visibilityFilter}
-          >
-            Active
-          </FilterLink>{" "}
-          <FilterLink
-            filter="SHOW_COMPLETED"
-            currentFilter={visibilityFilter}
-          >
-            Completed
-          </FilterLink>{" "}
-        </p>
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={filter =>
+            store.dispatch({
+              type: "SET_VISIBILITY_FILTER",
+              filter,
+            })
+          }
+        />
       </div>
     );
   }

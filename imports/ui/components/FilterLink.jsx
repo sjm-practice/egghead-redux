@@ -1,12 +1,12 @@
 import React, {
   PropTypes,
 } from "react";
-import store from "../../api/stores/store";
 
 const FilterLink = ({
   filter,
   currentFilter,
-  children
+  onClick,
+  children,
 }) => {
   if (filter === currentFilter) {
     return <span>{children}</span>;
@@ -17,10 +17,7 @@ const FilterLink = ({
       href="#"
       onClick={(e) => {
         e.preventDefault();
-        store.dispatch({
-          type: "SET_VISIBILITY_FILTER",
-          filter,
-        });
+        onClick(filter);
       }}
     >{children}</a>
   );
@@ -29,6 +26,7 @@ const FilterLink = ({
 FilterLink.propTypes = {
   filter: PropTypes.string.isRequired,
   currentFilter: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 FilterLink.defaultProps = {};
