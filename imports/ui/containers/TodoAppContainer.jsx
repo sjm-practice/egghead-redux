@@ -1,6 +1,5 @@
 import React, {
   PropTypes,
-  Component,
 } from "react";
 import store from "../../api/stores/store";
 import TodoList from "../components/TodoList";
@@ -20,44 +19,40 @@ const getVisibleTodos = (filter, todos) => {
   }
 };
 
-class TodoAppContainer extends Component {
-  render() {
-    const { todos, visibilityFilter } = this.props;
-    const visibleTodos = getVisibleTodos(visibilityFilter, todos);
-
-    return (
-      <div>
-        <AddTodo
-          onAddClick={text =>
-            store.dispatch({
-              type: "ADD_TODO",
-              id: nextTodoId++,
-              text,
-            })
-          }
-        />
-        <TodoList
-          todos={visibleTodos}
-          onTodoClick={id =>
-            store.dispatch({
-              type: "TOGGLE_TODO",
-              id,
-            })
-          }
-        />
-        <Footer
-          visibilityFilter={visibilityFilter}
-          onFilterClick={filter =>
-            store.dispatch({
-              type: "SET_VISIBILITY_FILTER",
-              filter,
-            })
-          }
-        />
-      </div>
-    );
-  }
-}
+const TodoAppContainer = ({
+  todos,
+  visibilityFilter,
+}) => (
+  <div>
+    <AddTodo
+      onAddClick={text =>
+        store.dispatch({
+          type: "ADD_TODO",
+          id: nextTodoId++,
+          text,
+        })
+      }
+    />
+    <TodoList
+      todos={getVisibleTodos(visibilityFilter, todos)}
+      onTodoClick={id =>
+        store.dispatch({
+          type: "TOGGLE_TODO",
+          id,
+        })
+      }
+    />
+    <Footer
+      visibilityFilter={visibilityFilter}
+      onFilterClick={filter =>
+        store.dispatch({
+          type: "SET_VISIBILITY_FILTER",
+          filter,
+        })
+      }
+    />
+  </div>
+);
 
 TodoAppContainer.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
