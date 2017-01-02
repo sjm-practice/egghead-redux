@@ -3,7 +3,11 @@ import React, {
 } from "react";
 import store from "../../api/stores/store";
 
-const FilterLink = ({ filter, children }) => {
+const FilterLink = ({ filter, currentFilter, children }) => {
+  if (filter === currentFilter) {
+    return <span>{children}</span>;
+  }
+
   return (
     <a
       href="#"
@@ -20,6 +24,7 @@ const FilterLink = ({ filter, children }) => {
 
 FilterLink.propTypes = {
   filter: PropTypes.string.isRequired,
+  currentFilter: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 FilterLink.defaultProps = {};

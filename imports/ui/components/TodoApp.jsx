@@ -24,11 +24,14 @@ const getVisibleTodos = (filter, todos) => {
 
 class TodoApp extends Component {
   render() {
-    const visibleTodos = getVisibleTodos(this.props.visibilityFilter, this.props.todos);
+    const { todos, visibilityFilter } = this.props;
+    const visibleTodos = getVisibleTodos(visibilityFilter, todos);
 
     return (
       <div>
-        <input type="text" ref={(node) => { this.input = node; }} />
+        <input type="text" ref={(node) => {
+          this.input = node;
+        }} />
         <button
           onClick={() => {
             store.dispatch({
@@ -58,9 +61,24 @@ class TodoApp extends Component {
         </ul>
         <p>
           Show:{" "}
-          <FilterLink filter="SHOW_ALL">All</FilterLink>{" "}
-          <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
-          <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>{" "}
+          <FilterLink
+            filter="SHOW_ALL"
+            currentFilter={visibilityFilter}
+          >
+            All
+          </FilterLink>{" "}
+          <FilterLink
+            filter="SHOW_ACTIVE"
+            currentFilter={visibilityFilter}
+          >
+            Active
+          </FilterLink>{" "}
+          <FilterLink
+            filter="SHOW_COMPLETED"
+            currentFilter={visibilityFilter}
+          >
+            Completed
+          </FilterLink>{" "}
         </p>
       </div>
     );
