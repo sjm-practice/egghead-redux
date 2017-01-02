@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
-import TodoApp from "../imports/ui/components/TodoApp";
+import TodoApp from "../imports/ui/containers/TodoAppContainer";
 import store from "../imports/api/stores/store";
 
 Meteor.startup(() => {

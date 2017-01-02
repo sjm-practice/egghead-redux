@@ -3,7 +3,11 @@ import React, {
 } from "react";
 import store from "../../api/stores/store";
 
-const FilterLink = ({ filter, currentFilter, children }) => {
+const FilterLink = ({
+  filter,
+  currentFilter,
+  children
+}) => {
   if (filter === currentFilter) {
     return <span>{children}</span>;
   }
