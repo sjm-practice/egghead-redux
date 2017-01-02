@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import store from "../../api/stores/store";
 import TodoList from "../components/TodoList";
+import AddTodo from "../components/AddTodo";
 import FilterLink from "../components/FilterLink";
 
 let nextTodoId = 0;
@@ -19,30 +20,22 @@ const getVisibleTodos = (filter, todos) => {
   }
 };
 
-class TodoApp extends Component {
+class TodoAppContainer extends Component {
   render() {
     const { todos, visibilityFilter } = this.props;
     const visibleTodos = getVisibleTodos(visibilityFilter, todos);
 
     return (
       <div>
-        <input
-          type="text"
-          ref={(node) => {
-            this.input = node;
-          }}
-        />
-        <button
-          onClick={() => {
+        <AddTodo
+          onAddClick={text =>
             store.dispatch({
               type: "ADD_TODO",
-              text: this.input.value,
               id: nextTodoId++,
-            });
-            this.input.value = "";
-          }}
-        >Add Todo
-        </button>
+              text,
+            })
+          }
+        />
         <TodoList
           todos={visibleTodos}
           onTodoClick={id =>
@@ -78,9 +71,9 @@ class TodoApp extends Component {
   }
 }
 
-TodoApp.propTypes = {
+TodoAppContainer.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
   visibilityFilter: PropTypes.string.isRequired,
 };
 
-export default TodoApp;
+export default TodoAppContainer;
