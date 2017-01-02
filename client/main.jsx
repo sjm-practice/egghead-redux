@@ -19,7 +19,10 @@ Meteor.startup(() => {
 
   const renderApp = () => {
     render(
-      <TodoApp todos={store.getState().todos} />,
+      <TodoApp
+        todos={store.getState().todos}
+        visibilityFilter={store.getState().visibilityFilter}
+      />,
       document.getElementById("render-target")
     );
   };

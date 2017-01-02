@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   Component,
 } from "react";
 import store from "../../api/stores/store";
@@ -23,6 +24,8 @@ const getVisibleTodos = (filter, todos) => {
 
 class TodoApp extends Component {
   render() {
+    const visibleTodos = getVisibleTodos(this.props.visibilityFilter, this.props.todos);
+
     return (
       <div>
         <input type="text" ref={(node) => { this.input = node; }} />
@@ -38,7 +41,7 @@ class TodoApp extends Component {
         >Add Todo
         </button>
         <ul>
-          {getVisibleTodos(store.getState().visibilityFilter, this.props.todos).map(todo =>
+          {visibleTodos.map(todo =>
             <li
               key={todo.id}
               onClick={() => {
@@ -63,5 +66,10 @@ class TodoApp extends Component {
     );
   }
 }
+
+TodoApp.propTypes = {
+  todos: PropTypes.array.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
+};
 
 export default TodoApp;
