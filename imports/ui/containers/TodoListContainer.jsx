@@ -1,9 +1,8 @@
 import React, {
+  PropTypes,
   Component,
 } from "react";
-import store from "../../api/stores/store";
 import TodoList from "../components/TodoList";
-
 
 const getVisibleTodos = (filter, todos) => {
   switch (filter) {
@@ -18,6 +17,7 @@ const getVisibleTodos = (filter, todos) => {
 
 class TodoListContainer extends Component {
   componentDidMount() {
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
     });
@@ -28,6 +28,7 @@ class TodoListContainer extends Component {
   }
 
   render() {
+    const { store } = this.context;
     const state = store.getState();
 
     return (
@@ -43,5 +44,9 @@ class TodoListContainer extends Component {
     );
   }
 }
+
+TodoListContainer.contextTypes = {
+  store: PropTypes.object,
+};
 
 export default TodoListContainer;

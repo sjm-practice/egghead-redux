@@ -1,11 +1,12 @@
-import React from "react";
-import store from "../../api/stores/store";
+import React, {
+  PropTypes,
+} from "react";
 
 let nextTodoId = 0;
 
 // NOTE: this is a small container / presentational component, so just keeping it
 // as a mixed presentational component for now. May split it out at a later time.
-const AddTodo = () => {
+const AddTodo = (props, { store }) => {
   let input;
 
   return (
@@ -29,6 +30,10 @@ const AddTodo = () => {
       </button>
     </div>
   );
+};
+
+AddTodo.contextTypes = {
+  store: PropTypes.object,
 };
 
 export default AddTodo;
