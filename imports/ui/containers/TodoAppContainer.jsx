@@ -2,22 +2,11 @@ import React, {
   PropTypes,
 } from "react";
 import store from "../../api/stores/store";
-import TodoList from "../components/TodoList";
 import AddTodo from "../components/AddTodo";
+import TodoListContainer from "./TodoListContainer";
 import Footer from "../components/Footer";
 
 let nextTodoId = 0;
-
-const getVisibleTodos = (filter, todos) => {
-  switch (filter) {
-    case "SHOW_ALL":
-      return todos;
-    case "SHOW_ACTIVE":
-      return todos.filter(todo => !todo.completed);
-    case "SHOW_COMPLETED":
-      return todos.filter(todo => todo.completed);
-  }
-};
 
 const TodoAppContainer = ({
   todos,
@@ -33,15 +22,7 @@ const TodoAppContainer = ({
         })
       }
     />
-    <TodoList
-      todos={getVisibleTodos(visibilityFilter, todos)}
-      onTodoClick={id =>
-        store.dispatch({
-          type: "TOGGLE_TODO",
-          id,
-        })
-      }
-    />
+    <TodoListContainer />
     <Footer />
   </div>
 );
