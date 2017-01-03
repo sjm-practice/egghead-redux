@@ -22,6 +22,7 @@ const AddTodo = () => {
             text: input.value,
           });
           input.value = "";
+          input.focus();
         }}
       >
         Add Todo

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
 import AppContainer from "../imports/ui/containers/AppContainer";
@@ -17,5 +17,15 @@ Meteor.startup(() => {
 
   console.log("Test todo added:", store.getState());
 
-  render(<AppContainer />, document.getElementById("render-target"));
+  class Provider extends Component {
+    render() {
+      return this.props.children;
+    }
+  }
+
+  render(
+    <Provider>
+      <AppContainer />
+    </Provider>,
+    document.getElementById("render-target"));
 });
