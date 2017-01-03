@@ -5,7 +5,7 @@ import TodoAppContainer from "../imports/ui/containers/TodoAppContainer";
 import store from "../imports/api/stores/store";
 
 Meteor.startup(() => {
-  console.log(store.getState());
+  console.log("Initial store state:", store.getState());
 
   const action = {
     type: "ADD_TODO",
@@ -15,17 +15,7 @@ Meteor.startup(() => {
 
   store.dispatch(action);
 
-  console.log(store.getState());
+  console.log("Test todo added:", store.getState());
 
-  const renderApp = () => {
-    render(
-      <TodoAppContainer
-        todos={store.getState().todos}
-        visibilityFilter={store.getState().visibilityFilter}
-      />,
-      document.getElementById("render-target")
-    );
-  };
-  store.subscribe(renderApp);
-  renderApp();
+  render(<TodoAppContainer />, document.getElementById("render-target"));
 });
