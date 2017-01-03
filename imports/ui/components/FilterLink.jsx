@@ -3,12 +3,11 @@ import React, {
 } from "react";
 
 const FilterLink = ({
-  filter,
-  currentFilter,
-  onClick,
+  active,
+  filterClickHandler,
   children,
 }) => {
-  if (filter === currentFilter) {
+  if (active) {
     return <span>{children}</span>;
   }
 
@@ -17,18 +16,18 @@ const FilterLink = ({
       href="#"
       onClick={(e) => {
         e.preventDefault();
-        onClick(filter);
+        filterClickHandler();
       }}
-    >{children}</a>
+    >
+      {children}
+    </a>
   );
 };
 
 FilterLink.propTypes = {
-  filter: PropTypes.string.isRequired,
-  currentFilter: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+  filterClickHandler: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
-FilterLink.defaultProps = {};
 
 export default FilterLink;
