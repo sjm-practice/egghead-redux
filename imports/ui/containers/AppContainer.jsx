@@ -3,7 +3,7 @@ import AddTodo from "../components/AddTodo";
 import TodoListContainer from "./TodoListContainer";
 import Footer from "../components/Footer";
 
-const TodoAppContainer = () => (
+const AppContainer = () => (
   <div>
     <AddTodo />
     <TodoListContainer />
@@ -11,4 +11,4 @@ const TodoAppContainer = () => (
   </div>
 );
 
-export default TodoAppContainer;
+export default AppContainer;

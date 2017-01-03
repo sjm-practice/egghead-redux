@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
-import TodoAppContainer from "../imports/ui/containers/TodoAppContainer";
+import AppContainer from "../imports/ui/containers/AppContainer";
 import store from "../imports/api/stores/store";
 
 Meteor.startup(() => {
@@ -17,5 +17,5 @@ Meteor.startup(() => {
 
   console.log("Test todo added:", store.getState());
 
-  render(<TodoAppContainer />, document.getElementById("render-target"));
+  render(<AppContainer />, document.getElementById("render-target"));
 });
