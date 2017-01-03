@@ -1,5 +1,6 @@
-import React, { PropTypes, Component } from "react";
 import { Meteor } from "meteor/meteor";
+import React from "react";
+import { Provider } from "react-redux";
 import { render } from "react-dom";
 import AppContainer from "../imports/ui/containers/AppContainer";
 import store from "../imports/api/stores/store";
@@ -17,28 +18,10 @@ Meteor.startup(() => {
 
   console.log("Test todo added:", store.getState());
 
-  class Provider extends Component {
-    getChildContext() {
-      return {
-        store: this.props.store,
-      };
-    }
-
-    render() {
-      return this.props.children;
-    }
-  }
-  Provider.propTypes = {
-    store: PropTypes.object,  // eslint-disable-line react/forbid-prop-types
-    children: PropTypes.node,
-  };
-  Provider.childContextTypes = {
-    store: PropTypes.object,
-  };
-
   render(
     <Provider store={store}>
       <AppContainer />
     </Provider>,
-    document.getElementById("render-target"));
+    document.getElementById("render-target")
+  );
 });
