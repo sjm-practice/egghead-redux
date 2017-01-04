@@ -4,3 +4,6 @@
 
 ## Notes
 * Monday 1/3/17, left off completing video 26 (Provider)
+* I like the brevity and convenience of react-redux connect(), however it wasn't obvious on how to render multiple components
+    * I did find this [post](http://stackoverflow.com/questions/35032204/react-redux-connect-to-multiple-components-best-practices) on how to render multiple components with connect
+    * essentially, using connect to create one container component that has multiple components to render, and destructuring props, and passing those to each individual component as needed
