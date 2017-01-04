@@ -11,3 +11,8 @@
 * PropTypes still works with connect container, just declare/define as usual
 * Children are pass on to connect container, just like to a normal container
 * props are passed on as well, but as 'ownProps' arguments to mapStateToProps and mapDispatchToProps
+
+## Feedback
+* A very good tutorial, clear progressive explanations.
+* At times shows what is going under the hood through simple coding examples
+* I would follow along, and not worry to much about refactoring in to a style you may code, because he does some of those refactors later on in the tutorial
