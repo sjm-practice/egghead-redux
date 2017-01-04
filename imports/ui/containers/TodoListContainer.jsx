@@ -27,4 +27,7 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
+// const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList);
+// export default TodoListContainer;
+//     shortened to...
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
