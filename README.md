@@ -8,3 +8,6 @@
     * I did find this [post](http://stackoverflow.com/questions/35032204/react-redux-connect-to-multiple-components-best-practices) on how to render multiple components with connect
     * essentially, using connect to create one container component that has multiple components to render, and destructuring props, and passing those to each individual component as needed
 * Note, there are varying coding conventions / styles in this code base; mostly because I'm mimicking different examples as I see them, and still dialing in on conventions to follow
+* PropTypes still works with connect container, just declare/define as usual
+* Children are pass on to connect container, just like to a normal container
+* props are passed on as well, but as 'ownProps' arguments to mapStateToProps and mapDispatchToProps
