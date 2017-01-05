@@ -4,17 +4,12 @@ import { Provider } from "react-redux";
 import { render } from "react-dom";
 import AppContainer from "../imports/ui/containers/AppContainer";
 import store from "../imports/api/stores/store";
+import { addTodo } from "../imports/api/actions/actionCreators";
 
 Meteor.startup(() => {
   console.log("Initial store state:", store.getState());
 
-  const action = {
-    type: "ADD_TODO",
-    id: 50099,
-    text: "live todo yo.",
-  };
-
-  store.dispatch(action);
+  store.dispatch(addTodo("live todo yo."));
 
   console.log("Test todo added:", store.getState());
 
