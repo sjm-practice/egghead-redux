@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
-let nextTodoId = 0;
+import { addTodo } from "../../api/actions/actionCreators";
 
 // NOTE: this is a small container / presentational component, so just keeping it
 // as a mixed presentational component for now. May split it out at a later time.
@@ -12,15 +11,13 @@ let AddTodo = ({ dispatch }) => {
     <div>
       <input
         type="text"
-        ref={(node) => { input = node; }}
+        ref={(node) => {
+          input = node;
+        }}
       />
       <button
         onClick={() => {
-          dispatch({
-            type: "ADD_TODO",
-            id: nextTodoId++,
-            text: input.value,
-          });
+          dispatch(addTodo(input.value));
           input.value = "";
           input.focus();
         }}
